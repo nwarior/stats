@@ -1,26 +1,30 @@
 ﻿package stats
 
 import (
-	"github.com/nwarior/bank/pkg/types"
 	"fmt"
+
+	"github.com/nwarior/bank/v2/pkg/types"
 )
 
-func ExampleAvg(){
-	payments := []types.Payment {
+func ExampleAvg() {
+	payments := []types.Payment{
 		{
-			ID: 101,
-			Amount: 10_00,
+			ID:       101,
+			Amount:   10_00,
 			Category: "ресторан",
+			Status:   types.StatusInProgress,
 		},
 		{
-			ID: 103,
-			Amount: 20_00,
+			ID:       103,
+			Amount:   20_00,
 			Category: "Burger",
+			Status: types.StatusOk,
 		},
 		{
-			ID: 101,
-			Amount: -10_00,
+			ID:       101,
+			Amount:   -10_00,
 			Category: "nowhere",
+			Status: types.StatusFail,
 		},
 	}
 
@@ -28,22 +32,25 @@ func ExampleAvg(){
 	// Output: 1500
 }
 
-func ExampleTotalInCategory(){
-	payments := []types.Payment {
+func ExampleTotalInCategory() {
+	payments := []types.Payment{
 		{
-			ID: 101,
-			Amount: 10_00,
+			ID:       101,
+			Amount:   10_00,
 			Category: "ресторан",
+			Status: types.StatusOk,
 		},
 		{
-			ID: 103,
-			Amount: 20_00,
+			ID:       103,
+			Amount:   20_00,
 			Category: "ресторан",
+			Status: types.StatusInProgress,
 		},
 		{
-			ID: 103,
-			Amount: -10_00,
+			ID:       103,
+			Amount:   -10_00,
 			Category: "nowhere",
+			Status: types.StatusFail,
 		},
 	}
 
