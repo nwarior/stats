@@ -58,3 +58,17 @@ func CategoriesTotal(payments []types.Payment) map[types.Category]types.Money {
 
 	return categories
 }
+
+// CategoriesAvg считает среднюю сумму платежа по каждой категории.
+func CategoriesAvg(payments []types.Payment)map[types.Category]types.Money {
+	categoryAvg := map[types.Category]types.Money{}
+	categoryLen := map[types.Category]types.Money{}
+
+	for _, payment := range payments {
+		categoryLen[payment.Category] = types.Money(len(FilterByCategory(payments, payment.Category)))
+		categoryAvg[payment.Category] = TotalInCategory(payments, payment.Category) / categoryLen[payment.Category]
+	}
+
+	return categoryAvg
+}
+
